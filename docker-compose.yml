@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+
+  python-scrape:
+    build:
+      context: .
+      dockerfile: python-scrape.dockerfile
+    container_name: python-scrape
+    working_dir: /root/src
+    ports:
+      - 5050:5050
+    volumes:
+      - ./src:/root/src
+    tty: true
+    networks:
+      - docker_default
+
+networks:
+  docker_default:
+    external: true
